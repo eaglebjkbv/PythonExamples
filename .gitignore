@@ -7,4 +7,5 @@ env.bak/
 venv.bak/
 /.idea
 /.vscode
+*__pycache__
 
