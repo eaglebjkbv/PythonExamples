@@ -6,6 +6,6 @@ ENV/
 env.bak/
 venv.bak/
 /.idea
-/.vscode
+.vscode
 *__pycache__
-
+/.Python
