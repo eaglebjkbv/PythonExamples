@@ -6,8 +6,8 @@ class win(QMainWindow):
         super().__init__()
         self.initUI()
 
-    def buttonClicked(self):
-        self.labelMerhaba.setText("Merhaba")
+    def buttonClicked(self,mesaj):
+        self.labelMerhaba.setText(mesaj)
 
     def initUI(self):
         self.setGeometry(10, 10, 600, 400)
@@ -15,7 +15,8 @@ class win(QMainWindow):
         self.labelMerhaba = QLabel("", self)
         self.pushButtonSelamla = QPushButton("Tıkla", self)
         self.pushButtonSelamla.setGeometry(10, 20, 100, 50)
-        self.pushButtonSelamla.clicked.connect(self.buttonClicked) # Tıklandığında çağırılacak Callback methodu belirtir
+        #self.pushButtonSelamla.clicked.connect(self.buttonClicked) Şeklinde parametresiz Gönderim
+        self.pushButtonSelamla.clicked.connect(lambda:self.buttonClicked("merhaba")) # Tıklandığında çağırılacak Callback methoduna "merhaba" mesajını gönderir
         self.show()
         
 
