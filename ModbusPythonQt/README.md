@@ -10,4 +10,6 @@ Program made by Python and contains **PyQt5** and **Pyserial** libraries.
 
 ## Info
 
-Coded by Bulent Vardal MZTHS Automation Teacher TURKEY..#Python Examples
+Coded by Bulent Vardal MZTHS Automation Teacher TURKEY..
+
+## Python Examples
