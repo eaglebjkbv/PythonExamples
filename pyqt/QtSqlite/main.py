@@ -58,8 +58,9 @@ class Win(QMainWindow):
 
     def saveData(self):
         query = QtSql.QSqlQuery(self.db)
-        print(self.textTodo.toPlainText())
-        query.exec_("insert into todo values (NULL,'Deneme','Deneme')")
+        todo = self.textTodo.toPlainText()
+        todoDesc=self.textDesc.toPlainText()
+        query.exec_("insert into todo values (NULL,'"+todo+"','"+todoDesc+"')")
         self.model.select()
 
     def CreateDb(self):
