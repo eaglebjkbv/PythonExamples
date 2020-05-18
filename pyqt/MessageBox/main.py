@@ -17,6 +17,7 @@ class win(QMainWindow):
         elif (result == QMessageBox.Cancel):
             self.labelMesaj.setText("Cancel Seçildi")
     
+    
     def initUI(self):
         self.setWindowTitle("Message Box Deneme")
         self.button1 = QPushButton("Show Message Box", self)
