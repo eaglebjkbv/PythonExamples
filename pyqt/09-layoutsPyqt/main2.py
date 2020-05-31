@@ -16,10 +16,6 @@ class Win(QMainWindow):
         
         comboBoxDeneme.setFixedWidth(100)
         
-    
-        
-        
-        
         hbox.addWidget(comboBoxDeneme,1)
         hbox.addStretch()
         hbox.addWidget(pushButtonClikMe, 1)
