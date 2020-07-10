@@ -11,7 +11,7 @@ class Window(QMainWindow):
     def seriPortListele(self):
         seriPortBilgi = QSerialPortInfo()
         for seriPort in seriPortBilgi.availablePorts():
-            print(seriPort.portName)
+            print(seriPort.portName())
             self.comboBoxSeriPortlar.addItem(seriPort.portName())
             
 

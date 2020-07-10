@@ -17,8 +17,6 @@ class Win(QMainWindow):
     def initModel(self):
         self.model.setTable('todo')
         self.model.setEditStrategy(QtSql.QSqlTableModel.OnFieldChange)
-            
-            
         self.model.select()
         self.model.setHeaderData(0, QtCore.Qt.Horizontal, "ID")
         self.model.setHeaderData(1, QtCore.Qt.Horizontal, "Todo")
@@ -68,7 +66,6 @@ class Win(QMainWindow):
         self.db.setDatabaseName("todos.db")
         self.model = QtSql.QSqlTableModel()
         self.initModel()
-
         if not self.db.open():
             QMessageBox.critical(self,QtGui.qApptr("Uyarı"),"Veri Tabanı Dosyası Açılamadı/Oluşturulamadı !",QMessageBox.Cancel)
             return False
