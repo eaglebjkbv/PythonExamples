@@ -16,17 +16,17 @@ class MainWindow(QMainWindow):
             self.comboSeriPortList.addItem(serialPort.portName())
 
     def dataReceived(self):
-        self.textEditGelenData.append(self.serialPort.readAll().data().decode())
+        self.textEditReceiveData.append(self.serialPort.readAll().data().decode())
         
     def portSendData(self):
-        self.serialPort.write(self.lineEditGidenData.text().encode())
+        self.serialPort.write(self.LineEditSendData.text().encode())
 
     def portDisconnect(self):
         if self.serialPort.isOpen():
             self.serialPort.close()
-            self.pushButtonBaglan.setEnabled(True)
-            self.pushButtonBaglantiKes.setEnabled(False)
-            self.pushButtonGonder.setEnabled(False)
+            self.pushButtonConnect.setEnabled(True)
+            self.pushButtonDisconnect.setEnabled(False)
+            self.pushButtonSend.setEnabled(False)
         
     def portConnect(self):
         
@@ -38,9 +38,9 @@ class MainWindow(QMainWindow):
         if not self.serialPort.isOpen():
             
             self.serialPort.open(QIODevice.ReadWrite)
-            self.pushButtonBaglan.setEnabled(False)
-            self.pushButtonBaglantiKes.setEnabled(True)
-            self.pushButtonGonder.setEnabled(True)
+            self.pushButtonConnect.setEnabled(False)
+            self.pushButtonDisconnect.setEnabled(True)
+            self.pushButtonSend.setEnabled(True)
 
 
 
@@ -52,27 +52,27 @@ class MainWindow(QMainWindow):
         hbox1=QHBoxLayout()
         self.comboSeriPortList=QComboBox()
         hbox1.addWidget(self.comboSeriPortList)
-        self.pushButtonBaglan=QPushButton("Bağlan")
-        self.pushButtonBaglan.setEnabled(True)
-        self.pushButtonBaglantiKes=QPushButton("Bağlantı Kes")
-        self.pushButtonBaglantiKes.setEnabled(False)
-        hbox1.addWidget(self.pushButtonBaglan)
-        hbox1.addWidget(self.pushButtonBaglantiKes)
+        self.pushButtonConnect=QPushButton("Bağlan")
+        self.pushButtonConnect.setEnabled(True)
+        self.pushButtonDisconnect=QPushButton("Bağlantı Kes")
+        self.pushButtonDisconnect.setEnabled(False)
+        hbox1.addWidget(self.pushButtonConnect)
+        hbox1.addWidget(self.pushButtonDisconnect)
         hbox1.addStretch()
         hbox2=QHBoxLayout()
-        self.textEditGelenData=QTextEdit()
-        self.textEditGelenData.setFixedSize(300,100)
-        hbox2.addWidget(self.textEditGelenData)
+        self.textEditReceiveData=QTextEdit()
+        self.textEditReceiveData.setFixedSize(300,100)
+        hbox2.addWidget(self.textEditReceiveData)
         hbox2.addStretch()
         hbox3=QHBoxLayout()
-        self.lineEditGidenData=QLineEdit()
-        self.lineEditGidenData.setFixedWidth(200)
-        self.pushButtonGonder=QPushButton("Gönder")
-        self.pushButtonGonder.setEnabled(False)
-        self.pushButtonGonder.setFixedWidth(95)
+        self.LineEditSendData=QLineEdit()
+        self.LineEditSendData.setFixedWidth(200)
+        self.pushButtonSend=QPushButton("Gönder")
+        self.pushButtonSend.setEnabled(False)
+        self.pushButtonSend.setFixedWidth(95)
 
-        hbox3.addWidget(self.lineEditGidenData)
-        hbox3.addWidget(self.pushButtonGonder)
+        hbox3.addWidget(self.LineEditSendData)
+        hbox3.addWidget(self.pushButtonSend)
 
         hbox3.addStretch()
         
@@ -85,15 +85,10 @@ class MainWindow(QMainWindow):
         centralWidget.setLayout(vboxana)
         self.setCentralWidget(centralWidget)
 
-        self.pushButtonBaglan.clicked.connect(self.portConnect)
-        self.pushButtonBaglantiKes.clicked.connect(self.portDisconnect)
-        self.pushButtonGonder.clicked.connect(self.portSendData)
+        self.pushButtonConnect.clicked.connect(self.portConnect)
+        self.pushButtonDisconnect.clicked.connect(self.portDisconnect)
+        self.pushButtonSend.clicked.connect(self.portSendData)
         self.serialPort.readyRead.connect(self.dataReceived)
-
-
-        
-        
-
 
 
 if __name__ == "__main__":
